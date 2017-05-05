@@ -30,6 +30,9 @@
 
 * [下载](top/downloads.md)
 
-* [译记](README.md)
+* [译注](README.md)
+  * [热度](tips/hot.md)
+  * [为什么使用 PclZip](tips/why.md)
+  * [Composer 使用](tips/composer.md)
 
 
