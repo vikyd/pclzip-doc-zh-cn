@@ -1,0 +1,40 @@
+
+#anchor-navigation-ex-navbar li {
+    list-style-type: none;
+    font-size: 16px;
+}
+
+/*.book-body {*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*!*background-color: #f5f5d5;*!*/
+/*}*/
+
+/*.body-inner {*/
+    /*position: static !important;*/
+    /*width: 75%;*/
+    /*!*background-color: white;*!*/
+    /*overflow-y: initial !important;*/
+/*}*/
+
+.page-inner{
+    max-width: 800px;
+}
+
+nav > ul > .chapter > a {
+    font-weight: bold;
+}
+
+.markdown-section h1 {
+    font-size: 1.8em;
+    font-weight: normal;
+    color: #12b811;
+}
+
+.markdown-section h2 {
+    font-size: 1.3em;
+    color: #12b811;
+    margin-top: 50px;
+    margin-bottom: .4em;
+    font-weight: normal;
+}

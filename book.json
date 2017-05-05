@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    "anchor-navigation-ex",
+    "theme-api",
+    "github"
+  ],
+  "pluginsConfig": {
+    "theme-api": {
+      "languages": [
+        {
+          "lang": "js",
+          "name": "JavaScript",
+          "default": true
+        },
+        {
+          "lang": "go",
+          "name": "Go"
+        }
+      ]
+    },
+    "github": {
+      "url": "https://github.com/Viky-zhang/pclzip-doc-zh-cn"
+    }
+  }
+}
