@@ -3,7 +3,7 @@
 * [介绍](top/home.md)
 
 * [用户指南](user_guide/introduction.md)
-  * [工作原理](user_guide/how_it_works.md)
+  * [如何使用](user_guide/how_it_works.md)
   * [参数选项](user_guide/optional_arguments.md)
   * [异常处理](user_guide/error_handling.md)
   * [自定义 PclZip](user_guide/customizing_pclzip.md)

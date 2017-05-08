@@ -16,7 +16,7 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 
 # 谁在用 PclZip
 - [PHPExcel](https://github.com/PHPOffice/PHPExcel/search?utf8=✓&q=pclzip&type=)
-- 
+- Stackoverflow 问问答：http://stackoverflow.com/search?tab=votes&q=pclzip
 
 
 
@@ -28,6 +28,35 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 
 
 # 目录
+* [介绍](top/home.md)
+
+* [用户指南](user_guide/introduction.md)
+  * [如何使用](user_guide/how_it_works.md)
+  * [参数选项](user_guide/optional_arguments.md)
+  * [异常处理](user_guide/error_handling.md)
+  * [自定义 PclZip](user_guide/customizing_pclzip.md)
+  * [Bug 定位](user_guide/troubleshooting_pclzip.md)
+  * [ZIP 格式](user_guide/format_zip.md)
+
+* [类和方法](class_methods/home.md)
+  * [PclZip::PclZip()](class_methods/pclzip.md)
+  * [PclZip::create()](class_methods/create.md)
+  * [PclZip::listContent()](class_methods/list_content.md)
+  * [PclZip::extract()](class_methods/extract.md)
+  * [PclZip::properties()](class_methods/properties.md)
+  * [PclZip::add()](class_methods/add.md)
+  * [PclZip::delete()](class_methods/delete.md)
+  * [PclZip::merge()](class_methods/merge.md)
+  * [PclZip::duplicate()](class_methods/duplicate.md)
+  
+
+* [最新消息](top/news.md)
+
+* [更新日志](top/release_notes.md)
+
+* [常见问题](top/faq.md)
+
+* [下载](top/downloads.md)
 
 
 # 完善
@@ -36,9 +65,6 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 问题意见，欢迎提 PR：https://github.com/Viky-zhang/pclzip-doc-zh-cn.git
 
 
-
-
-# 更新
 不定时更新。
 
 
