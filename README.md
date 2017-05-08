@@ -32,7 +32,7 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 
 * [用户指南](user_guide/introduction.md)
   * [如何使用](user_guide/how_it_works.md)
-  * [参数选项](user_guide/optional_arguments.md)
+  * [可选参数](user_guide/optional_arguments.md)
   * [异常处理](user_guide/error_handling.md)
   * [自定义 PclZip](user_guide/customizing_pclzip.md)
   * [Bug 定位](user_guide/troubleshooting_pclzip.md)
@@ -73,4 +73,6 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 - PclZip GitHub（非官方）：
 - PclZip Compose（非官方）：
 - PHPExcel（引用了 PclZip）：
+
+虽然有本中文文档翻译，但建议尽量阅读官方英文版本。
  
