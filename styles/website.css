@@ -25,6 +25,10 @@ nav > ul > .chapter > a {
     font-weight: bold;
 }
 
+.markdown-section{
+    margin-bottom: 100px;
+}
+
 .markdown-section h1 {
     font-size: 1.8em;
     font-weight: normal;
