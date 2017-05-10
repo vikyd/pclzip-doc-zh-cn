@@ -1,5 +1,4 @@
-
-# 参数目录见页面右上角图标：<i class="fa fa-anchor"></i>
+<!-- toc -->
 
 # 可选参数
 参数有 2 大类：
@@ -500,31 +499,58 @@ if ($v_list == 0) {
 回调函数中不应进行一些特殊的操作，如在处理过程中把压缩包删除了，这是不合理的。
 
 
-## IP_CB_PRE_EXTRACT（回调函数）
+## PCLZIP_CB_PRE_EXTRACT（解压前的回调）
+本参数用于在解压压缩包内的每个文件前执行一些操作，包括：
+- 修改解压后的文件路径或文件名
+- 跳过某些文件（即不解压压缩包内某些文件）
 
+此回调函数是在以下参数发生作用后执行的：
+- PCLZIP_OPT_PATH
+- PCLZIP_OPT_ADD_PATH
+- PCLZIP_OPT_REMOVE_PATH
+- PCLZIP_OPT_REMOVE_ALL_PATH
+
+但会在相关检查之前执行（如文件不存在、目录不存在）。
+
+本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
 ```php
 function myCallBack($p_event, &$p_header)
 {
-    [... Your specific code ...]
+    // ... 你的逻辑代码 ...
     return $result;
 }
 ```
+当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
+- $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_PRE_EXTRACT`），多个回调函数使用同一个函数时会比较有用。
+- $p_header：将被解压的文件的信息，是一个数组，里面包含几个信息字段。其中常用的是：
+  - 压缩包内的文件名
+  - 想解压到的文件位置
+  
+更详细的`$p_header`结构见`返回值`页面。
 
+本回调函数中`$p_header`中可以被修改的字段：
+- `filename`字段，即想解压到的文件位置。
+- 其他字段，均只读，不能修改
 
+本回调函数的返回值应是以下值之一：
+- 0：表示跳过，不解压当前文件
+- 1：表示解压将继续，只是可能会按照本回调函数中修改的文件名进行解压
+- 2：表示跳过，不解压当前文件，也不再解压后续的文件
+- 其他值：为未来备用（译注：n 年过去了貌似这个`未来`还没到）
 ```php
 function myPreExtractCallBack($p_event, &$p_header)
 {
     $info = pathinfo($p_header['filename']);
-    // ----- gif files are skipped
+    // ----- 跳过 gif 格式文件
     if ($info['extension'] == 'gif') {
       return 0;
     }
-    // ----- jpg files are extracted in images folder
+    // ----- 所有 jpg 文件都解压到 images 目录
     else if ($info['extension'] == 'jpg') {
       $p_header['filename'] = 'images/' . $info['basename'];
       return 1;
     }
-    // ----- all other files are simply extracted
+    // ----- 其他所有文件都直接正常解压
     else {
       return 1;
     }
@@ -536,46 +562,179 @@ $list = $archive->extract(
 );
 ```
 
+上述例子中，实现了以下功能：
+- 跳过 gif 格式文件
+- 所有 jpg 文件都解压到 images 目录
+- 其他所有文件都直接正常解压
 
 
 
-## PCLZIP_CB_POST_EXTRACT（回调函数）
 
+## PCLZIP_CB_POST_EXTRACT（解压后的回调）
+本参数用于在解压压缩包内的每个文件后执行一些操作，
+本参数不会对解压过程本身进行修改，但作用包括：
+- 重命名已解压的文件/目录
+- 删除已解压的文件/目录
+
+本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
 ```php
+function myCallBack($p_event, &$p_header)
+{
+    // ... 你的逻辑代码 ...
+    return $result;
+}
+```
+当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
+- $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_POST_EXTRACT`），多个回调函数使用同一个函数时会比较有用。
+- $p_header：将被解压的文件的信息，是一个数组，里面包含几个信息字段。其中常用的是：
+  - 解压后的文件名
+  - 解压操作的执行状态
+  
+更详细的`$p_header`结构见`返回值`页面。
 
+本回调函数中`$p_header`中的字段都不应被修改，因为所有字段都已包含了足够的信息。
+
+本回调函数的返回值应是以下值之一：
+- 1：表示后续文件的解压将继续
+- 2：表示不再解压后续的文件
+- 其他值：为未来备用
+```php
+function myPreExtractCallBack($p_event, &$p_header) { ... }
+
+function myPostExtractCallBack($p_event, &$p_header)
+{
+    // ----- 判断是否已成功解压
+    if ($p_header['status'] == 'ok') {
+      // ----- 读取已解压文件内容到标准输入中
+      readfile($p_header['filename']);
+      // ----- 删除文件
+      unlink($p_header['filename'])
+    }
+}
+
+$list = $archive->extract(
+    PCLZIP_OPT_PATH, 'temp',
+    PCLZIP_CB_PRE_EXTRACT, 'myPreExtractCallBack',
+    PCLZIP_CB_POST_EXTRACT, 'myPostExtractCallBack'
+);
 ```
 
+上述例子中，实现了以下功能：
+- 将所有解压成功的文件内容输出到标准输出中
+- 并在解压后删除已解压的文件
+
+注意：从 v2.1 开始，若想实现上述例子的功能，建议使用`PCLZIP_OPT_EXTRACT_IN_OUTPUT`参数，
+而非本回调函数，因为那样就不会在文件系统中产生临时文件。
 
 
+
+
+## PCLZIP_CB_PRE_ADD（添加到压缩包前的回调）
+本参数用于在添加文件到压缩包前执行一些操作，包括：
+- 修改被压缩文件在压缩包中的文件名或路径
+- 跳过，不添加某些文件到压缩包
+
+此回调函数是在以下参数发生作用后执行的：
+- PCLZIP_OPT_PATH
+- PCLZIP_OPT_ADD_PATH
+- PCLZIP_OPT_REMOVE_PATH
+- PCLZIP_OPT_REMOVE_ALL_PATH
+
+但会在检查文件名长度之前执行。
+
+本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
 ```php
+function myCallBack($p_event, &$p_header)
+{
+    // ... 你的逻辑代码 ...
+    return $result;
+}
+```
+当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
+- $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_PRE_ADD`），多个回调函数使用同一个函数时会比较有用。
+- $p_header：将被添加到压缩包的文件信息，是一个数组，里面包含几个信息字段。其中常用的是：
+  - 文件压缩前的名字和路径
+  - 文件在压缩包中的名字和路径
+  
+更详细的`$p_header`结构见`返回值`页面。
 
+本回调函数中`$p_header`中可以被修改的字段：
+- `filename`字段，即文件在压缩包中的文件位置。
+- 其他字段，均只读，不能修改
+
+
+本回调函数的返回值应是以下值之一：
+- 0：表示跳过，不添加当前文件当压缩包中，但会继续后续其他文件的添加
+- 1：表示压缩将继续，只是可能会按照本回调函数中修改的文件名进行压缩
+- 其他值：为未来备用
+```php
+function myPreAddCallBack($p_event, &$p_header)
+{
+    $info = pathinfo($p_header['stored_filename']);
+    // ----- bak 格式的文件跳过，不添加到压缩包
+    if ($info['extension'] == 'bak') {
+      return 0;
+    }
+    // ----- jpg 文件添加到压缩包时，放在压缩包内的 images 目录中
+    else if ($info['extension'] == 'jpg') {
+      $p_header['stored_filename'] = 'images/'.$info['basename'];
+      return 1;
+    }
+    // ----- 其他所有文件都按正常方式添加到压缩包中
+    else {
+      return 1;
+    }
+}
+
+$list = $archive->add(PCLZIP_CB_PRE_ADD, 'myPreAddCallBack'); 
 ```
 
+上述例子中，实现了以下功能：
+- bak 格式的文件跳过，不添加到压缩包
+- jpg 文件添加到压缩包时，放在压缩包内的 images 目录中
+- 其他所有文件都按正常方式添加到压缩包中
 
 
 
-## PCLZIP_CB_PRE_ADD（回调函数）
+
+
+## PCLZIP_CB_POST_ADD（添加到压缩包后的回调）
+本参数用于在添加文件到压缩包后执行一些操作，虽然不可修改已添加到压缩包内的文件，但可以：
+- 删除或修改文件系统中已添加到压缩包中的文件
+
+本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
 ```php
+function myCallBack($p_event, &$p_header)
+{
+    // ... 你的逻辑代码 ...
+    return $result;
+}
+```
+当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
+- $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_POST_ADD`），多个回调函数使用同一个函数时会比较有用。
+- $p_header：将已添加到压缩包的文件信息，是一个数组，里面包含几个信息字段。其中常用的是：
+  - 文件在压缩包中的名字和路径
+  
+更详细的`$p_header`结构见`返回值`页面。
 
+本回调函数中`$p_header`中的字段都不应被修改，因为所有字段都已包含了足够的信息。
+
+本回调函数的返回值应是以下值之一：
+- 1：必须返回 1（译注：暂无解释）
+- 其他值：为未来备用
+```php
+function myPostAddCallBack($p_event, &$p_header)
+{
+    // ----- 判断添加到压缩包是否成功
+    if ($p_header['status'] == 'ok') {
+      // ----- 将文件系统中的文件移动到文件系统的 trash 目录
+      rename($p_header['filename'], 'trash/'.$p_header['filename'])
+    }
+}
+
+$list = $archive->extract(PCLZIP_CB_POST_ADD, 'myPostAddCallBack'); 
 ```
 
-
-```php
-
-```
-
-
-
-
-## PCLZIP_CB_POST_ADD（回调函数）
-
-```php
-
-```
-
-
-
-```php
-
-```
+上述例子中，实现了以下功能：
+- 在添加到压缩包成功后，将文件系统中的文件移动到文件系统的 trash 目录
 
