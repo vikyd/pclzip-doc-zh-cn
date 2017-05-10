@@ -537,6 +537,7 @@ function myCallBack($p_event, &$p_header)
 - 1：表示解压将继续，只是可能会按照本回调函数中修改的文件名进行解压
 - 2：表示跳过，不解压当前文件，也不再解压后续的文件
 - 其他值：为未来备用（译注：n 年过去了貌似这个`未来`还没到）
+
 ```php
 function myPreExtractCallBack($p_event, &$p_header)
 {
@@ -577,6 +578,7 @@ $list = $archive->extract(
 - 删除已解压的文件/目录
 
 本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
+
 ```php
 function myCallBack($p_event, &$p_header)
 {
@@ -584,6 +586,7 @@ function myCallBack($p_event, &$p_header)
     return $result;
 }
 ```
+
 当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
 - $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_POST_EXTRACT`），多个回调函数使用同一个函数时会比较有用。
 - $p_header：将被解压的文件的信息，是一个数组，里面包含几个信息字段。其中常用的是：
@@ -598,6 +601,7 @@ function myCallBack($p_event, &$p_header)
 - 1：表示后续文件的解压将继续
 - 2：表示不再解压后续的文件
 - 其他值：为未来备用
+
 ```php
 function myPreExtractCallBack($p_event, &$p_header) { ... }
 
@@ -643,6 +647,7 @@ $list = $archive->extract(
 但会在检查文件名长度之前执行。
 
 本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
+
 ```php
 function myCallBack($p_event, &$p_header)
 {
@@ -650,6 +655,7 @@ function myCallBack($p_event, &$p_header)
     return $result;
 }
 ```
+
 当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
 - $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_PRE_ADD`），多个回调函数使用同一个函数时会比较有用。
 - $p_header：将被添加到压缩包的文件信息，是一个数组，里面包含几个信息字段。其中常用的是：
@@ -667,6 +673,7 @@ function myCallBack($p_event, &$p_header)
 - 0：表示跳过，不添加当前文件当压缩包中，但会继续后续其他文件的添加
 - 1：表示压缩将继续，只是可能会按照本回调函数中修改的文件名进行压缩
 - 其他值：为未来备用
+
 ```php
 function myPreAddCallBack($p_event, &$p_header)
 {
@@ -703,6 +710,7 @@ $list = $archive->add(PCLZIP_CB_PRE_ADD, 'myPreAddCallBack');
 - 删除或修改文件系统中已添加到压缩包中的文件
 
 本回调函数作为一个参数值放到 PclZip 的方法中，并应遵循下面约定：
+
 ```php
 function myCallBack($p_event, &$p_header)
 {
@@ -710,6 +718,7 @@ function myCallBack($p_event, &$p_header)
     return $result;
 }
 ```
+
 当 PclZip 方法调起回调函数时，会给回调函数传入两个变量：
 - $p_event：回调参数的标识符（在这里就是`PCLZIP_CB_POST_ADD`），多个回调函数使用同一个函数时会比较有用。
 - $p_header：将已添加到压缩包的文件信息，是一个数组，里面包含几个信息字段。其中常用的是：
@@ -722,6 +731,7 @@ function myCallBack($p_event, &$p_header)
 本回调函数的返回值应是以下值之一：
 - 1：必须返回 1（译注：暂无解释）
 - 其他值：为未来备用
+
 ```php
 function myPostAddCallBack($p_event, &$p_header)
 {
