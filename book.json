@@ -2,8 +2,7 @@
   "plugins": [
     "theme-api",
     "github",
-    "anchor-navigation-ex",
-    "toc"
+    "anchor-navigation-ex"
   ],
   "pluginsConfig": {
     "theme-api": {
@@ -21,10 +20,6 @@
     },
     "github": {
       "url": "https://github.com/Viky-zhang/pclzip-doc-zh-cn"
-    },
-    "toc": {
-      "addClass": true,
-      "className": "toc"
     }
   }
 }
