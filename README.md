@@ -36,7 +36,7 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
   * [异常处理](user_guide/error_handling.md)
   * [自定义 PclZip](user_guide/customizing_pclzip.md)
   * [Bug 定位](user_guide/troubleshooting_pclzip.md)
-  * [ZIP 格式](user_guide/format_zip.md)
+  * [ZIP 格式](user_guide/zip_format.md)
 
 * [类和方法](class_methods/home.md)
   * [PclZip::PclZip()](class_methods/pclzip.md)
