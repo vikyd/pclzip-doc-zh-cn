@@ -42,3 +42,8 @@ nav > ul > .chapter > a {
     margin-bottom: .4em;
     font-weight: normal;
 }
+
+.markdown-section h3{
+    font-size: 1em;
+    font-weight: normal;
+}

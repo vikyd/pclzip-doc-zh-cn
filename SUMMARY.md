@@ -22,11 +22,11 @@
   * [PclZip::duplicate()](class_methods/duplicate.md)
   
 
+* [常见问题](top/faq.md)
+
 * [最新消息](top/news.md)
 
 * [更新日志](top/release_notes.md)
-
-* [常见问题](top/faq.md)
 
 * [下载](top/downloads.md)
 

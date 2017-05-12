@@ -4,7 +4,6 @@
 
 
 译注：
-- 原文：http://www.phpconcept.net/pclzip/news
 - 原文中描述了最新消息的 PclZip 版本是 v2.6，而不是翻译时看到的 v2.8.2
 - 因此可忽略本页内容，因为不够新了
 
