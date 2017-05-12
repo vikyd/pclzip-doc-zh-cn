@@ -1,5 +1,7 @@
 
 # zip 压缩格式
+英文原文：http://www.phpconcept.net/pclzip/user-guide/25
+
 PclZip 支持的压缩格式是 PKZIP，PKZIP 格式的详细信息见：http://www.phpconcept.net/pclzip/pkzip.txt。
 
 译注：

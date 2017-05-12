@@ -1,5 +1,6 @@
 
 # 方法：PclZip::properties
+英文原文：http://www.phpconcept.net/pclzip/user-guide/56
 
 ## 概述
 本方法用于获取压缩包的属性信息。

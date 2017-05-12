@@ -1,5 +1,6 @@
 
 # 方法：PclZip::add
+英文原文：http://www.phpconcept.net/pclzip/user-guide/57
 
 ## 概述
 本方法用于添加文件/目录到压缩包中。

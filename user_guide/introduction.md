@@ -1,5 +1,7 @@
 
 # 介绍
+英文原文：http://www.phpconcept.net/pclzip/user-guide
+
 PclZip 是一个 PHP 库，用于压缩或解压 zip 压缩包。
  
 本库定义了一个 PclZip 类。一个此类的对象表示一个 zip 压缩包。本文将列举操作 zip 的一些方法。

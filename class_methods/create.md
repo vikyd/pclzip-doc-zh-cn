@@ -1,5 +1,6 @@
 
 # 方法：PclZip::create
+英文原文：http://www.phpconcept.net/pclzip/user-guide/53
 
 ## 概述
 本方法用于根据输入的文件创建一个 PKZIP 压缩包文件。

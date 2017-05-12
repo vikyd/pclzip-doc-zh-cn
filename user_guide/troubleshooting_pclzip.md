@@ -1,5 +1,7 @@
 
 # 错误定位
+英文原文：http://www.phpconcept.net/pclzip/user-guide/24
+
 原文是法文（PclZip 作者未翻译成英文）：http://www.phpconcept.net/pclzip/user-guide/24
 
 PclZip 有两个并存版本：

@@ -1,5 +1,7 @@
 <!-- toc -->
 
+英文原文：http://www.phpconcept.net/pclzip/user-guide/5
+
 # 可选参数（普通参数）
 参数有 2 大类：
 - 普通变量：传递操作信息到方法

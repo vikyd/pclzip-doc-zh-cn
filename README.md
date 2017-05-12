@@ -69,10 +69,17 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 
 
 # 相关资源
-- PclZip 官网：
-- PclZip GitHub（非官方）：
-- PclZip Compose（非官方）：
-- PHPExcel（引用了 PclZip）：
+## 使用
+- PclZip 官网：http://www.phpconcept.net/pclzip
+- PclZip GitHub（非官方）：https://github.com/ivanlanin/pclzip
+- PclZip Compose（非官方）：https://packagist.org/packages/pclzip/pclzip
 
-虽然有本中文文档翻译，但建议尽量阅读官方英文版本。
+# 使用 PclZip 的项目
+至少有以下项目用到了 PclZip：
+- WordPress：https://github.com/WordPress/WordPress/blob/master/wp-admin/includes/class-pclzip.php
+- PHPExcel：https://github.com/ddeboer/phpexcel/blob/master/Classes/PHPExcel/Shared/PCLZip/pclzip.lib.php
+- Drupal：https://www.drupal.org/project/pclzip
+
+
+> 建议尽量阅读 PclZip 官方英文文档
  

@@ -1,5 +1,6 @@
 
 # 方法：PclZip::duplicate
+英文原文：http://www.phpconcept.net/pclzip/user-guide/60
 
 ## 概述
 本方法用于复制压缩包。

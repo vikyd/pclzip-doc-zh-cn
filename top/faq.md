@@ -1,5 +1,6 @@
 
 # 常见问题
+英文原文：http://www.phpconcept.net/pclzip/faq
 
 
 ### 问题 1：为什么在创建一个 zip 包时，运行结束后仅留下一个空的 zip 包？

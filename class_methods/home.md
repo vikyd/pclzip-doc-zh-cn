@@ -1,5 +1,6 @@
 
 # 方法列表
+英文原文：http://www.phpconcept.net/pclzip/user-guide/21
 
 - PclZip::PclZip() : 构造函数
 - PclZip::create() : 创建 PKZIP 压缩包，并向其添加文件和目录

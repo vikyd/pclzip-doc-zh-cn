@@ -1,5 +1,7 @@
 
 # 如何使用
+英文原文：http://www.phpconcept.net/pclzip/user-guide/18
+
 
 ## PKZIP 压缩包的内部表示方式
 每个 PKZIP 压缩包都由一个 PclZip 对象表示。

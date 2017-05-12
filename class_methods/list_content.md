@@ -1,5 +1,6 @@
 
 # 方法：PclZip::listContent
+英文原文：http://www.phpconcept.net/pclzip/user-guide/54
 
 ## 概述
 本方法用于列出压缩包中的文件和目录信息。

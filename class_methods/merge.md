@@ -1,5 +1,6 @@
 
 # 方法：PclZip::merge
+英文原文：http://www.phpconcept.net/pclzip/user-guide/59
 
 ## 概述
 本方法用于将另一个压缩包内的所有内容合并到当前压缩包中。

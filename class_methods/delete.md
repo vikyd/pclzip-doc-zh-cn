@@ -1,5 +1,6 @@
 
 # 方法：PclZip::delete
+英文原文：http://www.phpconcept.net/pclzip/user-guide/58
 
 ## 概述
 本方法用于删除压缩包中的全部或部分文件。

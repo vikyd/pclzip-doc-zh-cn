@@ -1,5 +1,7 @@
 
 # 概述
+英文原文：http://www.phpconcept.net/pclzip
+
 PclZip 库用于对 zip 格式文件进行压缩和解压（WinZip，PKZIP）。
 
 PclZip 提供的功能包括：

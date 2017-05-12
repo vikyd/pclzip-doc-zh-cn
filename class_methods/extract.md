@@ -1,5 +1,6 @@
 
 # 方法：PclZip::extract
+英文原文：http://www.phpconcept.net/pclzip/user-guide/55
 
 ## 概述
 本方法用于解压压缩包中的文件和目录。

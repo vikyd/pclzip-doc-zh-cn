@@ -1,5 +1,7 @@
 
 # 自定义 PclZip
+英文原文：http://www.phpconcept.net/pclzip/user-guide/23
+
 PclZip 可通过配置一些静态常量来进行定制化。
 但不建议你修改这些参数，除非你确实需要并且知道你很清楚你所做的是什么。
 而且，当 PclZip 升级时，你还需重新配置这些参数。

@@ -1,5 +1,7 @@
 
 # 错误处理
+英文原文：http://www.phpconcept.net/pclzip/user-guide/20
+
 从 v1.3 开始，PclZip 开始增加错误处理功能。
 在此之前，只能通过外部的库来处理错误。
 增加错误处理功能的主要原因是为了 1 个 PHP 文件就能使用 PclZip。

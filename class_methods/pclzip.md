@@ -1,5 +1,6 @@
 
 # 方法：PclZip::PclZip
+英文原文：http://www.phpconcept.net/pclzip/user-guide/52
 
 ## 概述
 本方法是 PclZip 对象的构造函数。
