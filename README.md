@@ -58,7 +58,7 @@ PclZip 采用纯 PHP 的解决方案，可避免一些 PHP 自带的 zip 方便�
 # 完善
 水平有限，难免错漏。
 
-问题意见，欢迎提 PR：https://github.com/Viky-zhang/pclzip-doc-zh-cn.git
+问题意见，欢迎提 PR：https://github.com/vikyd/pclzip-doc-zh-cn.git
 
 
 不定时更新。
