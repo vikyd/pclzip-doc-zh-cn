@@ -4,6 +4,8 @@ http://www.phpconcept.net/pclzip
 
 PHP 库 [PclZip](http://www.phpconcept.net/pclzip) 的中文文档（非官方）。
 
+阅读：https://vikyd.gitbooks.io/pclzip/content/
+
 
 
 # 译注：PclZip 是什么？
